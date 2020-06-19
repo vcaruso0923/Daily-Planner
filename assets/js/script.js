@@ -1,9 +1,8 @@
-
 // Display Date at Top
 var dateToday = moment().format('MMMM Do YYYY');
 $("#currentDay").append(dateToday);
 
-//Get array of tasks or set array to empty if there are none. 
+//Get array of tasks or set array to empty if there are none in storage. 
 var taskList = JSON.parse(localStorage.getItem('todolist')) || [];
 
 $('.saveBtn').on('click', function (event) {
@@ -15,8 +14,11 @@ $('.saveBtn').on('click', function (event) {
     //get all textarea elements
     var timeBlockElements = $(".textarea");
 
-    //loop through textarea elements
+    // loop through textarea elements
     for (var i = 0; i < timeBlockElements.length; i++) {
+
+        //recreate array after clearing storage
+        var taskList = JSON.parse(localStorage.getItem('todolist')) || [];
 
         if (typeof timeBlockElements[i] !== "undefined") {
             // Get current iteration's ID and Get the to-do "value" from the textbox and store it as a variable using `.val()` and `.trim()`
@@ -24,8 +26,6 @@ $('.saveBtn').on('click', function (event) {
                 toDoTaskID: timeBlockElements[i].id,
                 toDoTask: $(timeBlockElements[i]).val()
             }
-
-            console.log(taskArray);
 
             // Add the new to-do and it's ID to our local 'taskList' variable
             taskList.push(taskArray);
@@ -36,20 +36,29 @@ $('.saveBtn').on('click', function (event) {
     }
 });
 
-// //load tasks on refresh
-// var loadTasks = function () {
-//     //load tasks from storage
-//     var tasks = JSON.parse(localStorage.getItem('todolist'))
+//load tasks on refresh (Looping didn't work! local storage would not accept [i])
+var loadTasks = function () {
 
-//     console.log(tasks);
-//     //loop through saved tasks
-//     for (var i = 0 ; tasks.length > i ; i++);
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[0];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[1];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[2];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[3];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[4];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[5];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[6];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[7];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
+    var loadedTasks = JSON.parse(localStorage.getItem('todolist'))[8];
+    document.getElementById(loadedTasks.toDoTaskID).textContent = loadedTasks.toDoTask
 
-//     //find the matching ID on page and put the saved text into it
-//     var specID = toDoTaskID[i];
-//     console.log(specID)
-//     document.getElementById(specID).value(toDoTask);
-// }
+}
     
 
 //Change textarea background color based on time
