@@ -1,6 +1,6 @@
 # Daily Planner
 
-<!-- (ADD LINK HERE!) -->
+(https://vcaruso0923.github.io/Daily-Planner/)
 
 A web app to plan out your daily activities
 
@@ -21,4 +21,4 @@ then the saved events persist.
 
 The following screenshot demonstrates the application functionality:
 
-<!-- ![code quiz](ADD FILE PATH HERE) -->
+![Daily Planner](./assets/images/demo.PNG)
