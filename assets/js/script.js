@@ -3,24 +3,38 @@
 var dateToday = moment().format('MMMM Do YYYY');
 $("#currentDay").append(dateToday);
 
+
 //Change textarea background color based on time
 var checkTime = function () {
-    var hour = $(".hour").text().trim();
 
-    var time = moment(hour, "LT");
-    console.log(time)
+    //Get Current time
+    var currentTime = moment().format('H');
 
-    //remove any old classes from element
-    $(".hour").removeClass(".present .past .future");
+    //get all elements with class "taskarea"
+    var timeBlockElements = $(".textarea");
 
-    // apply new class if task is near/over due date
-    if (moment().isAfter(time)) {
-        $(".hour").addClass(".past");
-    } else if (moment().isBefore(time)) {
-        $(".hour").addClass(".future");
-    } else {
-        $(".hour").addClass(".present");
+    //loop through taskarea classes
+    for (var i = 0 ; i < timeBlockElements.length ; i++) {
+
+        //Get element i's ID as a string
+        var elementID = timeBlockElements[i].id;
+
+        //get element by ID
+        var manipID = document.getElementById(timeBlockElements[i].id)
+
+        //remove any old classes from element
+        $(timeBlockElements[i].id).removeClass(".present .past .future");
+
+        // apply new class if task is present/past/future
+        if (elementID < currentTime) {
+            $(manipID).addClass("past");
+        } else if (elementID > currentTime) {
+            $(manipID).addClass("future");
+        } else {
+            $(manipID).addClass("present");
+        }
     }
 }
 
-checkTime();
+// checkTime every 5 minutes
+setInterval(checkTime(), (1000 * 60) * 5);
