@@ -1,10 +1,12 @@
 # Daily Planner
 
-(https://vcaruso0923.github.io/Daily-Planner/)
+## Overview
+A web app to plan out your daily activities by hour. 
 
-A web app to plan out your daily activities
+## Link
+https://vcaruso0923.github.io/Daily-Planner/
 
-## Acceptance Criteria
+## Functionality
 
 When you open the planner,
 then the current day is displayed at the top of the calendar.
